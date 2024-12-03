@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.logout-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.logout-btn:hover {
+    background-color: #e53935;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.card ul li:last-child {
+    border-bottom: none;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.card-actions a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.card-actions a:hover {
+    background-color: #45a049;
+}
+
+.card-actions .delete {
+    background-color: #f44336;
+}
+
+.card-actions .delete:hover {
+    background-color: #e53935;
+}
+
+.card-actions .edit {
+    background-color: #2196F3;
+}
+
+.card-actions .edit:hover {
+    background-color: #1976D2;
+}
+
+.admin-panel, .manager-panel, .employee-panel {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+
+.admin-panel {
+    border-left: 5px solid #4CAF50;
+}
+
+.manager-panel {
+    border-left: 5px solid #2196F3;
+}
+
+.employee-panel {
+    border-left: 5px solid #FF9800;
+}
+
+
+.content {
+    margin-bottom: 30px;
+}
+
+.content h3 {
+    color: #4CAF50;
+}
+
+
+.panel-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.card-actions .delete-form button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: inline-block; ]
+text-align: center;
+}
+
+.card-actions .delete-form button:hover {
+    background-color: #e53935;
+}

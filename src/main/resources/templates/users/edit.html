@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <link rel="stylesheet" th:href="@{/styles/css/users/create.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Edit User</h1>
+
+    <form th:action="@{/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post">
+
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" placeholder="Enter your username" required/>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-message"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Enter your password" required/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></p>
+        </div>
+
+        <div class="form-group">
+            <label for="roles">Roles:</label>
+            <select id="roles" name="roles" multiple>
+                <option th:each="role : ${roles}" th:value="${role.name}" th:text="${role.name}"
+                        th:selected="${user.roles.contains(role)}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select id="department" th:field="*{departmentId}">
+                <option th:each="department : ${departments}"
+                        th:value="${department.id}"
+                        th:text="${department.name}">
+                </option>
+            </select>
+        </div>
+        <div th:if="${errorMessage}" class="alert-error">
+            <p th:text="${errorMessage}" class="message"></p>
+        </div>
+        <button type="submit" class="submit-btn">Save</button>
+    </form>
+
+    <a href="/home" class="back-link">Back to Home</a>
+</div>
+</body>
+</html>

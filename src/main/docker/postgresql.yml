@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  test-for-kolesnik-postgresql:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=test-for-kolesnik
+      - POSTGRES_PASSWORD=test-for-kolesnik
+    ports:
+      - 127.0.0.1:5432:5432
+

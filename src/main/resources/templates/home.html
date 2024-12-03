@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" th:href="@{/styles/css/home.css}">
+</head>
+<body>
+
+<header>
+    <h1>Добро пожаловать, <span th:text="${user.username}"></span>!</h1>
+</header>
+
+<div class="container">
+    <!-- Контент для администратора -->
+    <div th:if="${userRoles.contains('ADMIN')}" class="content admin-panel">
+        <div class="panel-title">Панель администратора</div>
+        <h3>Управление отделами</h3>
+        <div th:each="department : ${departments}" class="card">
+            <div>
+                <h3 th:text="${department.name}"></h3>
+                <p>ID отдела: <span th:text="${department.id}"></span></p>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{/departments/edit/{id}(id=${department.id})}" class="edit">Редактировать</a>
+                <a th:href="@{/departments/delete/{id}(id=${department.id})}" class="delete">Удалить</a>
+            </div>
+        </div>
+        <a th:href="@{/departments/create}" class="logout-btn">Создать отдел</a>
+
+        <h3>Управление пользователями</h3>
+        <div th:each="employee : ${allEmployees}" class="card">
+            <div>
+                <h3 th:text="${employee.username}"></h3>
+                <p>ID пользователя: <span th:text="${employee.id}"></span></p>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{/users/edit/{id}(id=${employee.id})}" class="edit">Редактировать</a>
+                <form th:action="@{/users/{id}(id=${employee.id})}" method="post" class="delete-form">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="delete-link">Удалить</button>
+                </form>
+            </div>
+        </div>
+        <a th:href="@{/users/create}" class="logout-btn">Создать пользователя</a>
+    </div>
+
+    <!-- Контент для руководителя -->
+    <div th:if="${userRoles.contains('MANAGER')}" class="content manager-panel">
+        <div class="panel-title">Панель руководителя</div>
+        <h3>Мой отдел</h3>
+        <div class="card">
+            <div>
+                <h3 th:text="${department.name}"></h3>
+                <p>ID отдела: <span th:text="${department.id}"></span></p>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{/departments/edit/{id}(id=${department.id})}" class="edit">Редактировать отдел</a>
+            </div>
+        </div>
+
+        <h3>Сотрудники моего отдела</h3>
+        <div th:each="employee : ${departmentEmployees}" class="card">
+            <div>
+                <h3 th:text="${employee.username}"></h3>
+                <p>ID пользователя: <span th:text="${employee.id}"></span></p>
+            </div>
+            <div class="card-actions">
+                <a th:href="@{/users/edit/{id}(id=${employee.id})}" class="edit">Редактировать</a>
+                <a th:href="@{/users/delete/{id}(id=${employee.id})}" class="delete">Удалить</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контент для сотрудника -->
+    <div th:if="${userRoles.contains('EMPLOYEE')}" class="content employee-panel">
+        <div class="panel-title">Панель сотрудника</div>
+        <h3>Ваши коллеги</h3>
+        <div th:each="colleague : ${colleagues}" class="card">
+            <div>
+                <h3 th:text="${colleague.username}"></h3>
+                <p>ID коллеги: <span th:text="${colleague.id}"></span></p>
+            </div>
+        </div>
+    </div>
+    <a href="/logout" class="logout-btn">Выйти</a>
+</div>
+
+</body>
+</html>

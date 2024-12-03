@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${KOLESNIK_DB_HOST:localhost:5432}/${KOLESNIK_DB_NAME:test-for-kolesnik}
+    username: ${KOLESNIK_DB_USER:test-for-kolesnik}
+    password: ${KOLESNIK_DB_PASS:test-for-kolesnik}
+  flyway:
+    enabled: 'true'
+    url: jdbc:postgresql://${KOLESNIK_DB_HOST:localhost:5432}/${KOLESNIK_DB_NAME:test-for-kolesnik}
+    user: ${KOLESNIK_DB_USER:test-for-kolesnik}
+    password: ${KOLESNIK_DB_PASS:test-for-kolesnik}

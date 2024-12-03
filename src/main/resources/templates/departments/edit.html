@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Department</title>
+    <link rel="stylesheet" th:href="@{/styles/css/departments/create.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Department</h1>
+
+    <form th:action="@{/departments/edit}" th:object="${department}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label for="name">Department Name:</label>
+        <input type="text" id="name" th:field="*{name}" required>
+        <div th:if="${errorMessage}" class="alert-error">
+            <p th:text="${errorMessage}" class="message"></p>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+
+    <a href="/home" class="back-link">Back to Home</a>
+</div>
+</body>
+</html>

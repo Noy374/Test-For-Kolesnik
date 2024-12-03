@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <title>Create User</title>
+    <link rel="stylesheet" th:href="@{/styles/css/users/create.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Create User</h1>
+
+    <form th:action="@{/users/create}" method="post">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" th:value="${user.username}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="roles">Roles:</label>
+            <select id="roles" name="roles" multiple>
+                <option th:each="role : ${roles}" th:value="${role.name}" th:text="${role.name}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select id="department" name="departmentId">
+                <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
+            </select>
+        </div>
+        <div th:if="${errorMessage}" class="alert-error">
+            <p th:text="${errorMessage}" class="message"></p>
+        </div>
+        <button type="submit" class="submit-btn">Create User</button>
+    </form>
+
+    <a href="/home" class="back-link">Back to Home</a>
+</div>
+</body>
+</html>
